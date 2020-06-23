@@ -45,3 +45,8 @@ func main() {
     fmt.Printf("%v", res)
 }
 ```
+
+## TODOS
+* [ ] Extensive Test cases
+* [ ] API Docs
+* [ ] Similarity API

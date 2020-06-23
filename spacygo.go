@@ -22,19 +22,31 @@ var grpcConnection *grpc.ClientConn
 var grpcConnError error
 var grpcClient pb.NlpClient
 
-func load(modelName string) string {
+func load(modelName string) (r *pb.TextResponse, err error) {
 	if modelName == "" {
 		modelName = *defaultModel
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	r, err := grpcClient.LoadModel(ctx, &pb.TextRequest{Text: modelName})
+	r, err = grpcClient.LoadModel(ctx, &pb.TextRequest{Text: modelName})
 
 	if err != nil {
-		return r.GetMessage()
+		return r, nil
 	}
-	return err.Error()
+	return nil, err
+}
+
+func nlp(text string) (r *pb.ParsedNLPRes, err error) {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+
+	r, err = grpcClient.NlpProcess(ctx, &pb.TextRequest{Text: text})
+
+	if err != nil {
+		return r, nil
+	}
+	return nil, err
 }
 
 func initiateServer() {
