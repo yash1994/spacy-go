@@ -2,6 +2,7 @@ import sys
 import grpc
 import time
 import spacy
+import utils
 import nlp_pb2
 import nlp_pb2_grpc
 
@@ -9,12 +10,19 @@ from concurrent import futures
 
 class NlpService(nlp_pb2_grpc.NlpServicer):
     def __init__(self):
+        self.modelName = None
         self.nlp = None
 
     def LoadModel(self, request, context):
+        self.modelName = request.text
         self.nlp = spacy.load(request.text)
         response = nlp_pb2.TextResponse()
         response.message = "Model loaded '{}'".format(request.text)
+        return response
+
+    def NlpProcess(self, request, context):
+        doc = self.nlp(request.text)
+        response = utils.doc2proto(doc, self.modelName)
         return response
 
 def serve(server_address):

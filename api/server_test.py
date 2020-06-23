@@ -20,9 +20,19 @@ def grpc_stub_cls(grpc_channel):
 
     return NlpStub(grpc_channel)
 
-def test_some(grpc_stub_cls):
+def test_load_model(grpc_stub_cls):
     request = TextRequest()
     request.text = "en_core_web_sm"
     response = grpc_stub_cls.LoadModel(request)
 
     assert response.message == "Model loaded 'en_core_web_sm'"
+
+def test_nlp_process(grpc_stub_cls):
+    request = TextRequest()
+    request.text = "This is a text."
+    response = grpc_stub_cls.NlpProcess(request)
+    assert response.doc.text == "This is a text."
+    assert response.tokens[0].pos == "DET"
+    assert response.tokens[0].dep == "nsubj"
+    assert response.tokens[3].pos == "NOUN"
+    assert response.tokens[3].is_alpha == True
