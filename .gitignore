@@ -1,0 +1,3 @@
+api/nlp_pb2*
+api/__pycache__*
+.pytest_cache

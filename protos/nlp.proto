@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package nlp;
+
+service Nlp {
+    rpc LoadModel (TextRequest) returns (TextResponse) {}
+}
+
+message TextRequest {
+    string text = 1;
+}
+
+message TextResponse {
+    string message = 1;
+}
+
+// message Doc {
+//     string text = 1;
+//     string text_with_ws = 2;
+//     bool is_tagged = 3;
+//     bool is_parsed = 4;
+//     bool is_nered = 5;
+//     bool is_sentenced = 6;
+// }
+
+// message Ent {
+//     int32 start = 1;
+//     int32 end = 2;
+//     string label = 3;
+// }
+
+// message Sent {
+//     int32 start = 1;
+//     int32 end = 2;
+// }
+
+// message Noun_chunk {
+//     int32 start = 1;
+//     int32 end = 2;
+// }
+
+// message Token {
+//     string text = 1;
+//     string text_with_ws = 2;
+//     string whitespace = 3;
+//     int64 orth = 4;
+//     string ent_type = 5;
+//     string ent_iob = 6;
+//     string lemma = 7;
+//     string norm = 8;
+//     string lower = 9;
+//     string shape = 10;
+//     string prefix = 11;
+//     string suffix = 12;
+//     string pos = 13;
+//     string tag = 14;
+//     string dep = 15;
+//     bool is_alpha = 16;
+//     bool is_ascii = 17;
+//     bool is_digit = 18;
+//     bool is_lower = 19;
+//     bool is_upper = 20;
+//     bool is_title = 21;
+//     bool is_punct = 22;
+//     bool is_left_punct = 23;
+//     bool is_right_punct = 24;
+//     bool is_space = 25;
+//     bool is_bracket = 26;
+//     bool is_currency = 27;
+//     bool like_url = 28;
+//     bool like_num = 29;
+//     bool like_email = 30;
+//     bool is_oov = 31;
+//     bool is_stop = 32;
+//     bool is_sent_start = 33;
+//     int32 head = 34;
+// }
+
+// message ParsedNLPRes {
+//     string model = 1;
+//     Doc doc = 2;
+//     repeated Ent ents = 3;
+//     repeated Sent sents = 4;
+//     repeated Noun_chunk noun_chunks = 5;
+//     repeated Token tokens = 6; 
+// }
