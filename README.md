@@ -37,35 +37,40 @@ The following command will spin up python gRPC server at `localhost:50051`.
 package main
 
 import (
-    "fmt"
-    spacygo "github.com/yash1994/spacy-go"
+	"fmt"
+
+	spacygo "github.com/yash1994/spacy-go"
 )
 
 func main() {
 
-    // load language model
-    var modelName string = "en_core_web_sm"
-    r, err := load(modelName)
-    
-    fmt.Printf("%v", r.GetMessage())
+	// load language model
+	var modelName string = "en_core_web_sm"
+	r, err := spacygo.Load(modelName)
 
-    // annotate text
-    var text string = "I propose to consider the question, 'Can machines think?"
+	if err != nil {
+		return
+	}
 
-    doc, err := nlp(text)
+	fmt.Printf("%v \n", r.GetMessage())
 
-    // print annotated info : part-of-speech
-    for i,token := range doc.GetTokens() {
-        fmt.Printf("token '%v' part-of-speech tag: %v", token.GetText(),token.GetPos())
-    }
+	// annotate text
+	var text string = "I propose to consider the question, 'Can machines think?"
 
-    // calculate text similarity
-    var texta string = "I like apples"
-    var textb string = "I like oranges"
-    
-    textSimilarity, err := similarity(texta, textb)
+	doc, err := spacygo.Nlp(text)
 
-    fmt.Printf("text similarity between %v and %v is %v", texta, textb, textSimilarity.GetSimilarity())
+	// print annotated info : part-of-speech
+	for i, token := range doc.GetTokens() {
+		fmt.Printf("token %v '%v' part-of-speech tag: %v \n", i, token.GetText(), token.GetPos())
+	}
+
+	// calculate text similarity
+	var texta string = "I like apples"
+	var textb string = "I like oranges"
+
+	textSimilarity, err := spacygo.Similarity(texta, textb)
+
+	fmt.Printf("text similarity between %v and %v is %v", texta, textb, textSimilarity.GetSimilarity())
 }
 ```
 
