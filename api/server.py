@@ -25,6 +25,13 @@ class NlpService(nlp_pb2_grpc.NlpServicer):
         response = utils.doc2proto(doc, self.modelName)
         return response
 
+    def DocSimilarity(self, request, context):
+        docA = self.nlp(request.texta)
+        docB = self.nlp(request.textb)
+        response = nlp_pb2.TextSimilarity()
+        response.similarity = docA.similarity(docB)
+        return response    
+
 def serve(server_address):
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     nlp_pb2_grpc.add_NlpServicer_to_server(NlpService(), server)

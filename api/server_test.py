@@ -1,6 +1,6 @@
 import pytest
 
-from python_stubs.nlp_pb2 import TextRequest
+from python_stubs.nlp_pb2 import TextRequest, TextSimilarityRequest
 
 @pytest.fixture(scope='module')
 def grpc_add_to_server():
@@ -36,3 +36,10 @@ def test_nlp_process(grpc_stub_cls):
     assert response.tokens[0].dep == "nsubj"
     assert response.tokens[3].pos == "NOUN"
     assert response.tokens[3].is_alpha == True
+
+def test_doc_similarity(grpc_stub_cls):
+    request = TextSimilarityRequest()
+    request.texta = "I like apples"
+    request.textb = "I like oranges"
+    response = grpc_stub_cls.DocSimilarity(request)
+    assert pytest.approx(response.similarity, 0.2) == 0.90

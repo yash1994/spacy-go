@@ -5,14 +5,24 @@ package nlp;
 service Nlp {
     rpc LoadModel (TextRequest) returns (TextResponse) {}
     rpc NlpProcess (TextRequest) returns (ParsedNLPRes) {}
+    rpc DocSimilarity (TextSimilarityRequest) returns (TextSimilarity) {}
 }
 
 message TextRequest {
     string text = 1;
 }
 
+message TextSimilarityRequest {
+    string texta = 1;
+    string textb = 2;
+}
+
 message TextResponse {
     string message = 1;
+}
+
+message TextSimilarity {
+    float similarity = 1;
 }
 
 message Doc {
