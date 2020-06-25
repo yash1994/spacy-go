@@ -46,8 +46,8 @@ func main() {
 }
 ```
 
-## To-Do
-* [*] Extensive Test cases
+## ToDos
+* [x] Extensive Test cases
 * [ ] API Docs
 * [ ] Similarity API
 * [ ] build script
