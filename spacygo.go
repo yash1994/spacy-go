@@ -50,6 +50,18 @@ func nlp(text string) (r *pb.ParsedNLPRes, err error) {
 	return r, nil
 }
 
+func similarity(texta string, textb string) (r *pb.TextSimilarity, err error) {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+
+	r, err = grpcClient.DocSimilarity(ctx, &pb.TextSimilarityRequest{Texta: texta, Textb: textb})
+
+	if err != nil {
+		return nil, err
+	}
+	return r, nil
+}
+
 func initiateServer() {
 	cmd := exec.Command("python3", *serverPath, *serverAddr)
 	if err := cmd.Start(); err == nil {
