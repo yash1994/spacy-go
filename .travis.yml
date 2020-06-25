@@ -3,7 +3,6 @@ matrix:
   - language: python
     python: 3.6
     before_script:
-      - python3 -m grpc_tools.protoc --proto_path=protos --python_out=api --grpc_python_out=api protos/nlp.proto
       - python3 -m spacy download en
       - pip install pytest
     install:
@@ -17,7 +16,6 @@ matrix:
       - export GO111MODULE=on
       - source ~/virtualenv/python3.6/bin/activate
       - pip install -r requirements.txt
-      - python3 -m grpc_tools.protoc --proto_path=protos --python_out=api --grpc_python_out=api protos/nlp.proto
       - python3 -m spacy download en
     install:
       - go mod download
