@@ -2,6 +2,7 @@ package spacygo
 
 import (
 	"math"
+	"strings"
 	"testing"
 )
 
@@ -19,6 +20,20 @@ func TestLoadModel(t *testing.T) {
 		t.Errorf("failed testLoadModel: %v", err.Error())
 	}
 
+}
+
+func TestLoadModelError(t *testing.T) {
+	var modelName string = "dummy_model_name"
+	var errSubs string = "Can't find model 'dummy_model_name'"
+	r, err := load(modelName)
+
+	if r == nil {
+		if strings.Contains(err.Error(), errSubs) {
+			t.Logf("passed testLoadModelError: %v", errSubs)
+		} else {
+			t.Errorf("failed testLoadModelError: %v", err.Error())
+		}
+	}
 }
 
 func TestNlpProcessDoc(t *testing.T) {
