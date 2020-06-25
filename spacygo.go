@@ -32,9 +32,10 @@ func load(modelName string) (r *pb.TextResponse, err error) {
 	r, err = grpcClient.LoadModel(ctx, &pb.TextRequest{Text: modelName})
 
 	if err != nil {
-		return r, nil
+		return nil, err
 	}
-	return nil, err
+
+	return r, nil
 }
 
 func nlp(text string) (r *pb.ParsedNLPRes, err error) {
@@ -44,9 +45,9 @@ func nlp(text string) (r *pb.ParsedNLPRes, err error) {
 	r, err = grpcClient.NlpProcess(ctx, &pb.TextRequest{Text: text})
 
 	if err != nil {
-		return r, nil
+		return nil, err
 	}
-	return nil, err
+	return r, nil
 }
 
 func initiateServer() {
@@ -68,7 +69,9 @@ func init() {
 	if grpcConnError != nil {
 		log.Fatalf("Could not connect to server: %v", grpcConnError)
 	}
-	defer grpcConnection.Close()
+
+	//defer grpcConnection.Close()
 
 	grpcClient = pb.NewNlpClient(grpcConnection)
+
 }

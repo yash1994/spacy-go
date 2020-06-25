@@ -47,7 +47,7 @@ func main() {
 ```
 
 ## To-Do
-* [ ] Extensive Test cases
+* [*] Extensive Test cases
 * [ ] API Docs
 * [ ] Similarity API
 * [ ] build script
