@@ -48,6 +48,7 @@ func main() {
 
 ## ToDos
 * [x] Extensive Test cases
+* [ ] Error handling server side
 * [ ] API Docs
 * [ ] Similarity API
 * [ ] build script
