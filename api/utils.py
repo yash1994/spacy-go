@@ -1,4 +1,4 @@
-import nlp_pb2
+from python_stubs import nlp_pb2
 
 def doc2proto(doc, model):
     proto = nlp_pb2.ParsedNLPRes()

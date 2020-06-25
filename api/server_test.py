@@ -1,10 +1,10 @@
 import pytest
 
-from nlp_pb2 import TextRequest
+from python_stubs.nlp_pb2 import TextRequest
 
 @pytest.fixture(scope='module')
 def grpc_add_to_server():
-    from nlp_pb2_grpc import add_NlpServicer_to_server
+    from python_stubs.nlp_pb2_grpc import add_NlpServicer_to_server
 
     return add_NlpServicer_to_server
 
@@ -16,7 +16,7 @@ def grpc_servicer():
 
 @pytest.fixture(scope='module')
 def grpc_stub_cls(grpc_channel):
-    from nlp_pb2_grpc import NlpStub
+    from python_stubs.nlp_pb2_grpc import NlpStub
 
     return NlpStub(grpc_channel)
 

@@ -3,8 +3,8 @@ import grpc
 import time
 import spacy
 import utils
-import nlp_pb2
-import nlp_pb2_grpc
+from python_stubs import nlp_pb2
+from python_stubs import nlp_pb2_grpc
 
 from concurrent import futures
 

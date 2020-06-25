@@ -7,7 +7,7 @@ import (
 	"os/exec"
 	"time"
 
-	pb "github.com/yash1994/spacy-go/pbgo"
+	pb "github.com/yash1994/spacy-go/go-stubs"
 
 	"google.golang.org/grpc"
 )
