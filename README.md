@@ -19,9 +19,7 @@ go get -v "github.com/yash1994/spacy-go"
 
 ### Setting up python gRPC server
 
-The $GOPATH environment variable lists places for Go to look for Go Workspaces.
-
-By default, Go assumes our GOPATH location is at $HOME/go, where $HOME is the root directory of our user account on our computer.
+The `$GOPATH` environment variable lists places for Go to look for Go Workspaces. By default, Go assumes our GOPATH location is at `$HOME/go`, where `$HOME` is the root directory of our user account on our computer.
 
 Before importing the golang library, these commands need to be executed (inside source package) to spin up the python gRPC server.
 

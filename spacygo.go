@@ -2,7 +2,6 @@ package spacygo
 
 import (
 	"context"
-	"flag"
 	"log"
 	"os/exec"
 	"time"
@@ -12,19 +11,20 @@ import (
 	"google.golang.org/grpc"
 )
 
-var (
-	serverAddr   = flag.String("server_addr", "localhost:50051", "The server address in the format of host:port")
-	defaultModel = flag.String("model_name", "en_core_web_sm", "Name of default language model to be loaded for NLP")
-	serverPath   = flag.String("server_path", "api/server.py", "Path to NLP server file")
+const (
+	serverAddr   string = "localhost:50051"
+	defaultModel string = "en_core_web_sm"
+	serverPath   string = "api/server.py"
 )
 
 var grpcConnection *grpc.ClientConn
 var grpcConnError error
 var grpcClient pb.NlpClient
 
-func load(modelName string) (r *pb.TextResponse, err error) {
+// Load : load language model
+func Load(modelName string) (r *pb.TextResponse, err error) {
 	if modelName == "" {
-		modelName = *defaultModel
+		modelName = defaultModel
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
@@ -38,7 +38,8 @@ func load(modelName string) (r *pb.TextResponse, err error) {
 	return r, nil
 }
 
-func nlp(text string) (r *pb.ParsedNLPRes, err error) {
+// Nlp : annotate text
+func Nlp(text string) (r *pb.ParsedNLPRes, err error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
@@ -50,7 +51,8 @@ func nlp(text string) (r *pb.ParsedNLPRes, err error) {
 	return r, nil
 }
 
-func similarity(texta string, textb string) (r *pb.TextSimilarity, err error) {
+// Similarity : compute vector similarity between two texts
+func Similarity(texta string, textb string) (r *pb.TextSimilarity, err error) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
@@ -63,7 +65,7 @@ func similarity(texta string, textb string) (r *pb.TextSimilarity, err error) {
 }
 
 func initiateServer() {
-	cmd := exec.Command("python3", *serverPath, *serverAddr)
+	cmd := exec.Command("python3", serverPath, serverAddr)
 	if err := cmd.Start(); err == nil {
 		return
 	}
@@ -76,7 +78,7 @@ func init() {
 	// initiateServer()
 
 	// Set up a connection to the server.
-	grpcConnection, grpcConnError = grpc.Dial(*serverAddr, grpc.WithInsecure(), grpc.WithBlock())
+	grpcConnection, grpcConnError = grpc.Dial(serverAddr, grpc.WithInsecure(), grpc.WithBlock())
 
 	if grpcConnError != nil {
 		log.Fatalf("Could not connect to server: %v", grpcConnError)

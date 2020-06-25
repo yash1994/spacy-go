@@ -8,7 +8,7 @@ import (
 
 func TestLoadModel(t *testing.T) {
 	var modelName string = "en_core_web_sm"
-	r, err := load(modelName)
+	r, err := Load(modelName)
 
 	if r.GetMessage() == "Model loaded 'en_core_web_sm'" {
 		t.Logf("passed testLoadModel.load: %v == Model loaded 'en_core_web_sm'", r.GetMessage())
@@ -25,7 +25,7 @@ func TestLoadModel(t *testing.T) {
 func TestLoadModelError(t *testing.T) {
 	var modelName string = "dummy_model_name"
 	var errSubs string = "Can't find model 'dummy_model_name'"
-	r, err := load(modelName)
+	r, err := Load(modelName)
 
 	if r == nil {
 		if strings.Contains(err.Error(), errSubs) {
@@ -38,7 +38,7 @@ func TestLoadModelError(t *testing.T) {
 
 func TestNlpProcessDoc(t *testing.T) {
 	var text string = "Apple is looking at buying U.K. startup for $1 billion"
-	r, err := nlp(text)
+	r, err := Nlp(text)
 
 	if r.GetDoc().GetText() == text {
 		t.Logf("passed testNlpProcess.doc.text: %v == %v", r.GetDoc().GetText(), text)
@@ -83,7 +83,7 @@ func TestNlpProcessDoc(t *testing.T) {
 
 func TestNlpProcessEnts(t *testing.T) {
 	var text string = "Apple is looking at buying U.K. startup for $1 billion"
-	r, err := nlp(text)
+	r, err := Nlp(text)
 
 	if r.GetEnts()[0].GetLabel() == "ORG" && r.GetEnts()[0].GetStart() == 0 && r.GetEnts()[0].GetEnd() == 1 {
 		t.Logf("passed testNlpProcess.ents[0].label_: %v == %v", r.GetEnts()[0].GetLabel(), "ORG")
@@ -113,7 +113,7 @@ func TestNlpProcessEnts(t *testing.T) {
 func TestNlpProcessSents(t *testing.T) {
 	var text string = "Systems based on automatically learning the rules can be made more accurate simply by supplying more input data. However, systems based on handwritten rules can only be made more accurate by increasing the complexity of the rules, which is a much more difficult task."
 
-	r, err := nlp(text)
+	r, err := Nlp(text)
 
 	if r.GetSents()[0].GetStart() == 0 && r.GetSents()[0].GetEnd() == 19 {
 		t.Logf("passed testNlpProcess.sents[0].start: %v == %v", r.GetSents()[0].GetStart(), 0)
@@ -131,7 +131,7 @@ func TestNlpProcessSents(t *testing.T) {
 func TestNlpProcessNounChunks(t *testing.T) {
 	var text string = "Systems based on automatically learning the rules can be made more accurate simply by supplying more input data."
 
-	r, err := nlp(text)
+	r, err := Nlp(text)
 
 	if r.GetNounChunks()[0].GetStart() == 0 && r.GetNounChunks()[0].GetEnd() == 1 {
 		t.Logf("passed testNlpProcess.noun_chunks[0].start: %v == %v", r.GetNounChunks()[0].GetStart(), 0)
@@ -156,7 +156,7 @@ func TestNlpProcessNounChunks(t *testing.T) {
 
 func TestNlpProcessTokens(t *testing.T) {
 	var text string = "Apple is looking at buying U.K. startup for $1 billion"
-	r, err := nlp(text)
+	r, err := Nlp(text)
 
 	if r.GetTokens()[0].GetText() == "Apple" {
 		t.Logf("passed testNlpProcess.tokens[0].text: %v == %v", r.GetTokens()[0].GetText(), "Apple")
@@ -366,7 +366,7 @@ func TestDocSimilarity(t *testing.T) {
 	var textb string = "I like oranges"
 	var actualSimi float64 = 0.909
 	var tolerance float64 = 0.001
-	r, err := similarity(texta, textb)
+	r, err := Similarity(texta, textb)
 
 	if math.Abs(float64(r.GetSimilarity())-actualSimi) < tolerance {
 		t.Logf("passed TestDocSimilarity: %v ~= %v", r.GetSimilarity(), actualSimi)
