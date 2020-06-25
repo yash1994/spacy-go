@@ -5,7 +5,7 @@
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
 spacy-go is Golang interface for accessing linguistic annotations provided by
-[spaCy](https://spacy.io) using Google's [gRPC](https://grpc.io/). This module only supports basic functionalities like loading language models and providing linguistic annotation for text sentences.
+[spaCy](https://spacy.io) using Google's [gRPC](https://grpc.io/). This module only supports basic functionalities like loading language models, linguistic annotation and similarity for text sentences.
 
 ## Installation
 
@@ -19,13 +19,17 @@ go get -v "github.com/yash1994/spacy-go"
 
 ### Setting up python gRPC server
 
+The $GOPATH environment variable lists places for Go to look for Go Workspaces.
+
+By default, Go assumes our GOPATH location is at $HOME/go, where $HOME is the root directory of our user account on our computer.
+
 Before importing the golang library, these commands need to be executed (inside source package) to spin up the python gRPC server.
 
-`pip install -r requirements.txt`
+`pip install -r $GOPATH/src/github.com/yash1994/spacy-go/requirements.txt`
 
-`python3 -m grpc_tools.protoc --proto_path=protos --python_out=api --grpc_python_out=api protos/nlp.proto`
+The following command will spin up python gRPC server at `localhost:50051`.
 
-`python3 api/server.py &`
+`python3 $GOPATH/src/github.com/yash1994/spacy-go/api/server.py &`
 
 ## Usage
 
@@ -41,8 +45,29 @@ import (
 
 func main() {
 
-    res := spacygo.load("en_core_web_sm")
-    fmt.Printf("%v", res)
+    // load language model
+    var modelName string = "en_core_web_sm"
+    r, err := load(modelName)
+    
+    fmt.Printf("%v", r.GetMessage())
+
+    // annotate text
+    var text string = "I propose to consider the question, 'Can machines think?"
+
+    doc, err := nlp(text)
+
+    // print annotated info : part-of-speech
+    for i,token := range doc.GetTokens() {
+        fmt.Printf("token '%v' part-of-speech tag: %v", token.GetText(),token.GetPos())
+    }
+
+    // calculate text similarity
+    var texta string = "I like apples"
+    var textb string = "I like oranges"
+    
+    textSimilarity, err := similarity(texta, textb)
+
+    fmt.Printf("text similarity between %v and %v is %v", texta, textb, textSimilarity.GetSimilarity())
 }
 ```
 
@@ -50,5 +75,5 @@ func main() {
 * [x] Extensive Test cases
 * [x] Error handling server side
 * [ ] API Docs
-* [ ] Similarity API
+* [x] Similarity API
 * [ ] build script
