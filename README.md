@@ -77,6 +77,7 @@ func main() {
 ## ToDos
 * [x] Extensive Test cases
 * [x] Error handling server side
+* [ ] Add SSL and auth
 * [ ] API Docs
 * [x] Similarity API
 * [ ] build script
