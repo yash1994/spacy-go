@@ -34,9 +34,9 @@ class NlpService(nlp_pb2_grpc.NlpServicer):
 
 def serve(server_address):
 
-    with open('server.key', 'rb') as f:
+    with open('../server.key', 'rb') as f:
         private_key = f.read()
-    with open('server.crt', 'rb') as f:
+    with open('../server.crt', 'rb') as f:
         certificate_chain = f.read()
 
     server_credentials = grpc.ssl_server_credentials(((private_key, certificate_chain,),))
