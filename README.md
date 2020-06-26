@@ -88,6 +88,6 @@ func main() {
 * [x] Extensive Test cases
 * [x] Error handling server side
 * [x] Add SSL and auth
-* [ ] API Docs
+* [x] API Docs
 * [x] Similarity API
 * [ ] build script
