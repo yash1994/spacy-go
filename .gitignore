@@ -2,3 +2,4 @@ api/python_stubs/__pycache__*
 api/__pycache__*
 .pytest_cache
 compile-protos.sh
+server*

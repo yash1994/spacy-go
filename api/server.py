@@ -33,9 +33,17 @@ class NlpService(nlp_pb2_grpc.NlpServicer):
         return response    
 
 def serve(server_address):
+
+    with open('server.key', 'rb') as f:
+        private_key = f.read()
+    with open('server.crt', 'rb') as f:
+        certificate_chain = f.read()
+
+    server_credentials = grpc.ssl_server_credentials(((private_key, certificate_chain,),))
+
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     nlp_pb2_grpc.add_NlpServicer_to_server(NlpService(), server)
-    server.add_insecure_port(server_address)
+    server.add_secure_port(server_address, server_credentials)
     server.start()
     try:
         while True:

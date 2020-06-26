@@ -25,13 +25,15 @@ Before importing the golang library, these commands need to be executed (inside 
 
 `pip install -r $GOPATH/src/github.com/yash1994/spacy-go/requirements.txt`
 
+Connection between client and server is secured by TLS/SSL authentication. Use following command to generate unique pair of root certificate that is used to authenticate the server and private key that only the server has access to.
+
+`openssl req -newkey rsa:2048 -nodes -keyout $GOPATH/src/github.com/yash1994/spacy-go/server.key -x509 -days 365 -out $GOPATH/src/github.com/yash1994/spacy-go/server.crt -subj "/CN=localhost"`
+
 The following command will spin up python gRPC server at `localhost:50051`.
 
 `python3 $GOPATH/src/github.com/yash1994/spacy-go/api/server.py &`
 
 ## Usage
-
-### load language model
 
 ```Go
 package main
@@ -77,7 +79,7 @@ func main() {
 ## ToDos
 * [x] Extensive Test cases
 * [x] Error handling server side
-* [ ] Add SSL and auth
+* [x] Add SSL and auth
 * [ ] API Docs
 * [x] Similarity API
 * [ ] build script

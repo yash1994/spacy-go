@@ -7,6 +7,7 @@ matrix:
       - pip install pytest
     install:
       - pip install -r requirements.txt
+      - openssl req -newkey rsa:2048 -nodes -keyout server.key -x509 -days 365 -out server.crt -subj "/CN=localhost"
     script:
       - python -m pytest api/server_test.py
     cache: pip

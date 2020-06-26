@@ -9,6 +9,7 @@ import (
 	pb "github.com/yash1994/spacy-go/go-stubs"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 )
 
 const (
@@ -78,7 +79,15 @@ func init() {
 	// initiateServer()
 
 	// Set up a connection to the server.
-	grpcConnection, grpcConnError = grpc.Dial(serverAddr, grpc.WithInsecure(), grpc.WithBlock())
+
+	// SSL Credentials
+	clientCert, err := credentials.NewClientTLSFromFile("server.crt", "")
+
+	if err != nil {
+		log.Fatalf("Could not create client SSL certificate: %v", err)
+	}
+
+	grpcConnection, grpcConnError = grpc.Dial(serverAddr, grpc.WithTransportCredentials(clientCert), grpc.WithBlock())
 
 	if grpcConnError != nil {
 		log.Fatalf("Could not connect to server: %v", grpcConnError)
