@@ -80,9 +80,9 @@ func main() {
 
 | Function | Arguments | Return Type | Description |
 | -------- | --------- | ----------- | ----------- |
-| Load | modelName `string` | `TextResponse`, `Error` | Load [spaCy's Language Models](https://spacy.io/usage/models) for text annotations. |
-| Nlp | text `string` | `ParsedNLPRes`, `Error` | Annotate (parse, tag, ner) text using previously loaded model. |
-| Similarity | texta `string`, textb `string` | `TextSimilarity`, `Error` | Computes semantic similarity between two sentences using loaded language model. |
+| Load | modelName `string` | [`TextResponse`](docs/textResponse.md), `Error` | Load [spaCy's Language Models](https://spacy.io/usage/models) for text annotations. |
+| Nlp | text `string` | [`ParsedNLPRes`](docs/parsedNlpRes.md), `Error` | Annotate (parse, tag, ner) text using previously loaded model. |
+| Similarity | texta `string`, textb `string` | [`TextSimilarity`](docs/textSimilarity.md), `Error` | Computes semantic similarity between two sentences using loaded language model. |
 
 ## ToDos
 * [x] Extensive Test cases
