@@ -38,6 +38,12 @@ def serve(server_address):
     private_key_path = os.path.join(os.environ['GOPATH'], 'src/github.com/yash1994/spacy-go/server.key')
     certificate_chain_path = os.path.join(os.environ['GOPATH'], 'src/github.com/yash1994/spacy-go/server.crt')
 
+    if not os.path.exists(private_key_path):
+        private_key_path = "server.key"
+
+    if not os.path.exists(certificate_chain_path):
+        certificate_chain_path = "server.crt"    
+
     with open(private_key_path, 'rb') as f:
         private_key = f.read()
     with open(certificate_chain_path, 'rb') as f:

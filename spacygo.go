@@ -68,7 +68,13 @@ func Similarity(texta string, textb string) (r *pb.TextSimilarity, err error) {
 func init() {
 
 	// Set up a connection to the server.
-	var tslFilePath string = path.Join(os.Getenv("GOPATH"), "src/github.com/yash1994/spacy-go/server.key")
+	var tslFilePath string
+
+	if _, oserr := os.Stat("server.crt"); oserr == nil {
+		tslFilePath = "server.crt"
+	} else {
+		tslFilePath = path.Join(os.Getenv("GOPATH"), "src/github.com/yash1994/spacy-go/server.crt")
+	}
 
 	// SSL Credentials
 	clientCert, err := credentials.NewClientTLSFromFile(tslFilePath, "")
