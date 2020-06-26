@@ -3,6 +3,8 @@ package spacygo
 import (
 	"context"
 	"log"
+	"os"
+	"path"
 	"time"
 
 	pb "github.com/yash1994/spacy-go/go-stubs"
@@ -66,9 +68,10 @@ func Similarity(texta string, textb string) (r *pb.TextSimilarity, err error) {
 func init() {
 
 	// Set up a connection to the server.
+	var tslFilePath string = path.Join(os.Getenv("GOPATH"), "src/github.com/yash1994/spacy-go/server.key")
 
 	// SSL Credentials
-	clientCert, err := credentials.NewClientTLSFromFile("server.crt", "")
+	clientCert, err := credentials.NewClientTLSFromFile(tslFilePath, "")
 
 	if err != nil {
 		log.Fatalf("Could not create client SSL certificate: %v", err)
