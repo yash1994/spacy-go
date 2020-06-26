@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/yash1994/spacy-go.svg?branch=master)](https://travis-ci.org/yash1994/spacy-go)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/yash1994/spacy-go)
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![codecov](https://codecov.io/gh/yash1994/spacy-go/branch/master/graph/badge.svg)](https://codecov.io/gh/yash1994/spacy-go)
 
 spacy-go is Golang interface for accessing linguistic annotations provided by
 [spaCy](https://spacy.io) using Google's [gRPC](https://grpc.io/). This module only supports basic functionalities like loading language models, linguistic annotation and similarity for text sentences.
