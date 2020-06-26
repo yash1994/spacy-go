@@ -6,6 +6,22 @@ import (
 	"testing"
 )
 
+func TestLoadModelDefault(t *testing.T) {
+	var modelName string = ""
+	r, err := Load(modelName)
+
+	if r.GetMessage() == "Model loaded 'en_core_web_sm'" {
+		t.Logf("passed testLoadModelDefault.load: %v == Model loaded 'en_core_web_sm'", r.GetMessage())
+	} else {
+		t.Errorf("failed testLoadModelDefault.load: %v != Model loaded 'en_core_web_sm'", r.GetMessage())
+	}
+
+	if err != nil {
+		t.Errorf("failed testLoadModelDefault: %v", err.Error())
+	}
+
+}
+
 func TestLoadModel(t *testing.T) {
 	var modelName string = "en_core_web_sm"
 	r, err := Load(modelName)

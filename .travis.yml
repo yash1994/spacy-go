@@ -22,6 +22,6 @@ matrix:
     install:
       - go mod download
     script:
-      - (python3 api/server.py &) && go test -v
+      - (python3 api/server.py &) && go test -v -coverprofile=coverage.txt -covermode=atomic
 notifications:
   email: false

@@ -3,3 +3,4 @@ api/__pycache__*
 .pytest_cache
 compile-protos.sh
 server*
+coverage.txt

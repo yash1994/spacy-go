@@ -3,7 +3,6 @@ package spacygo
 import (
 	"context"
 	"log"
-	"os/exec"
 	"time"
 
 	pb "github.com/yash1994/spacy-go/go-stubs"
@@ -15,7 +14,6 @@ import (
 const (
 	serverAddr   string = "localhost:50051"
 	defaultModel string = "en_core_web_sm"
-	serverPath   string = "api/server.py"
 )
 
 var grpcConnection *grpc.ClientConn
@@ -65,18 +63,7 @@ func Similarity(texta string, textb string) (r *pb.TextSimilarity, err error) {
 	return r, nil
 }
 
-func initiateServer() {
-	cmd := exec.Command("python3", serverPath, serverAddr)
-	if err := cmd.Start(); err == nil {
-		return
-	}
-	log.Fatalf("Could not initiate python NLP server")
-}
-
 func init() {
-
-	// Set up python server.
-	// initiateServer()
 
 	// Set up a connection to the server.
 
