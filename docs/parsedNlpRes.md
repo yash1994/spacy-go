@@ -7,11 +7,11 @@ ParsedNLPRes is type of `struct` returned when `Nlp` method is called.
 | Name | Type | Access Method | Return Type | Description |
 | ---- | -----| ------------- | ----------- | ----------- |
 | `Model` | `string` | `GetModel()` | `string` | Contains name of loaded language model. |
-| `Doc` | `Doc` | `GetDoc()` | `Doc` | Contains `Doc` of type `struct`. |
-| `Ents` | `Array` | `GetEnts()` | `Array` | Contains `Array` of type `Ent` (list of entities from nered text). |
-| `Sents` | `Array` | `GetSents()` | `Array` | Contains `Array` of type `Sent` (list of sentences from processed text). |
-| `NounChunks` | `Array` | `GetNounChunks()` | `Array` | Contains `Array` of type `NounChunk` ((list of Noun Chunks from processed text)). |
-| `Tokens` | `Array` | `GetTokens()` | `Array` | Contains `Array` of type `Token` (list of tokens from processed text). |
+| `Doc` | `Doc` | `GetDoc()` | [`Doc`](https://github.com/yash1994/spacy-go/blob/master/docs/parsedNlpRes.md#doc) | Contains `Doc` of type `struct`. |
+| `Ents` | `Array` | `GetEnts()` | `Array` of [`Ent`](https://github.com/yash1994/spacy-go/blob/master/docs/parsedNlpRes.md#ent) | Contains `Array` of type [`Ent`](https://github.com/yash1994/spacy-go/blob/master/docs/parsedNlpRes.md#ent) (list of entities from nered text). |
+| `Sents` | `Array` | `GetSents()` | `Array` of [`Sent`](https://github.com/yash1994/spacy-go/blob/master/docs/parsedNlpRes.md#sent) | Contains `Array` of type [`Sent`](https://github.com/yash1994/spacy-go/blob/master/docs/parsedNlpRes.md#sent) (list of sentences from processed text). |
+| `NounChunks` | `Array` | `GetNounChunks()` | `Array` of [`NounChunk`](https://github.com/yash1994/spacy-go/blob/master/docs/parsedNlpRes.md#nounchunk) | Contains `Array` of type [`NounChunk`](https://github.com/yash1994/spacy-go/blob/master/docs/parsedNlpRes.md#nounchunk) ((list of Noun Chunks from processed text)). |
+| `Tokens` | `Array` | `GetTokens()` | `Array` of [`Token`](https://github.com/yash1994/spacy-go/blob/master/docs/parsedNlpRes.md#token) | Contains `Array` of type [`Token`](https://github.com/yash1994/spacy-go/blob/master/docs/parsedNlpRes.md#token) (list of tokens from processed text). |
 
 # Doc
 
@@ -50,6 +50,17 @@ Sent is type of `struct` returned as array element when `GetSents()` method is c
 | ---- | -----| ------------- | ----------- | ----------- |
 | `Start` | `int32` | `GetStart()` | `int32` | Starting index of sentence in processed text. |
 | `End` | `int32` | `GetEnd()` | `int32` | Ending index of sentence in processed text. |
+
+# NounChunk
+
+NounChunk is type of `struct` returned as array element when `GetNounChunks()` method is called on `ParsedNLPRes`.
+
+## Attributes and Access Methods
+
+| Name | Type | Access Method | Return Type | Description |
+| ---- | -----| ------------- | ----------- | ----------- |
+| `Start` | `int32` | `GetStart()` | `int32` | Starting index of Noun Chunk in processed text. |
+| `End` | `int32` | `GetEnd()` | `int32` | Ending index of Noun Chunk in processed text. |
 
 # Token
 
