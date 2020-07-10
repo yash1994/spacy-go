@@ -6,6 +6,50 @@ import (
 	"testing"
 )
 
+func TestLoadModelError(t *testing.T) {
+	var modelName string = "dummy_model_name"
+	var errSubs string = "Can't find model 'dummy_model_name'"
+	r, err := Load(modelName)
+
+	if r == nil {
+		if strings.Contains(err.Error(), errSubs) {
+			t.Logf("passed testLoadModelError: %v", errSubs)
+		} else {
+			t.Errorf("failed testLoadModelError: %v", err.Error())
+		}
+	}
+}
+
+func TestNlpProcessError(t *testing.T) {
+	var text string = "This is error test."
+	var errSubs string = "'NoneType' object is not callable"
+	r, err := Nlp(text)
+
+	if r == nil {
+		if strings.Contains(err.Error(), errSubs) {
+			t.Logf("passed testNlpProcessError: %v", errSubs)
+		} else {
+			t.Errorf("failed testNlpProcessError: %v", err.Error())
+		}
+	}
+}
+
+func TestDocSimilarityError(t *testing.T) {
+	var texta string = "I like apples"
+	var textb string = "I like oranges"
+	var errSubs string = "'NoneType' object is not callable"
+
+	r, err := Similarity(texta, textb)
+
+	if r == nil {
+		if strings.Contains(err.Error(), errSubs) {
+			t.Logf("passed testDocSimilarityError: %v", errSubs)
+		} else {
+			t.Errorf("failed testDocSimilarityError: %v", err.Error())
+		}
+	}
+}
+
 func TestLoadModelDefault(t *testing.T) {
 	var modelName string = ""
 	r, err := Load(modelName)
@@ -36,20 +80,6 @@ func TestLoadModel(t *testing.T) {
 		t.Errorf("failed testLoadModel: %v", err.Error())
 	}
 
-}
-
-func TestLoadModelError(t *testing.T) {
-	var modelName string = "dummy_model_name"
-	var errSubs string = "Can't find model 'dummy_model_name'"
-	r, err := Load(modelName)
-
-	if r == nil {
-		if strings.Contains(err.Error(), errSubs) {
-			t.Logf("passed testLoadModelError: %v", errSubs)
-		} else {
-			t.Errorf("failed testLoadModelError: %v", err.Error())
-		}
-	}
 }
 
 func TestNlpProcessDoc(t *testing.T) {
