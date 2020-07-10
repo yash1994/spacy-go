@@ -378,10 +378,10 @@ func TestNlpProcessTokens(t *testing.T) {
 		t.Errorf("failed testNlpProcess.tokens[6].like_email: %v != %v", r.GetTokens()[6].GetLikeEmail(), false)
 	}
 
-	if r.GetTokens()[7].GetIsOov() == false {
-		t.Logf("passed testNlpProcess.tokens[7].is_oov: %v == %v", r.GetTokens()[7].GetIsOov(), false)
+	if r.GetTokens()[7].GetIsOov() == true {
+		t.Logf("passed testNlpProcess.tokens[7].is_oov: %v == %v", r.GetTokens()[7].GetIsOov(), true)
 	} else {
-		t.Errorf("failed testNlpProcess.tokens[7].is_oov: %v != %v", r.GetTokens()[7].GetIsOov(), false)
+		t.Errorf("failed testNlpProcess.tokens[7].is_oov: %v != %v", r.GetTokens()[7].GetIsOov(), true)
 	}
 
 	if r.GetTokens()[7].GetIsStop() == true {
