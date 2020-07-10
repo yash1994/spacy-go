@@ -410,7 +410,7 @@ func TestNlpProcessTokens(t *testing.T) {
 func TestDocSimilarity(t *testing.T) {
 	var texta string = "I like apples"
 	var textb string = "I like oranges"
-	var actualSimi float64 = 0.909
+	var actualSimi float64 = 0.837
 	var tolerance float64 = 0.001
 	r, err := Similarity(texta, textb)
 
