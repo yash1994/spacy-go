@@ -6,6 +6,10 @@ service Nlp {
     rpc LoadModel (TextRequest) returns (TextResponse) {}
     rpc NlpProcess (TextRequest) returns (ParsedNLPRes) {}
     rpc DocSimilarity (TextSimilarityRequest) returns (TextSimilarity) {}
+    rpc AddRule (Rule) returns (TextResponse) {}
+    rpc RemoveRule (TextRequest) returns (TextResponse) {}
+    rpc GetRule (TextRequest) returns (Rule) {}
+    rpc GetMatches (TextRequest) returns (Matches) {}
 }
 
 message TextRequest {
@@ -93,4 +97,24 @@ message ParsedNLPRes {
     repeated Sent sents = 4;
     repeated Noun_chunk noun_chunks = 5;
     repeated Token tokens = 6; 
+}
+
+message Pattern {
+    string key = 1;
+    string value = 2;
+}
+
+message Rule {
+    string id = 1;
+    repeated Pattern patterns = 2;
+}
+
+message Match {
+    string id = 1;
+    int32 start = 2;
+    int32 end = 3;
+}
+
+message Matches {
+    repeated Match matches = 1;
 }

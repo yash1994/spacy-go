@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='nlp',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\tnlp.proto\x12\x03nlp\"\x1b\n\x0bTextRequest\x12\x0c\n\x04text\x18\x01 \x01(\t\"5\n\x15TextSimilarityRequest\x12\r\n\x05texta\x18\x01 \x01(\t\x12\r\n\x05textb\x18\x02 \x01(\t\"\x1f\n\x0cTextResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"$\n\x0eTextSimilarity\x12\x12\n\nsimilarity\x18\x01 \x01(\x02\"w\n\x03\x44oc\x12\x0c\n\x04text\x18\x01 \x01(\t\x12\x14\n\x0ctext_with_ws\x18\x02 \x01(\t\x12\x11\n\tis_tagged\x18\x03 \x01(\x08\x12\x11\n\tis_parsed\x18\x04 \x01(\x08\x12\x10\n\x08is_nered\x18\x05 \x01(\x08\x12\x14\n\x0cis_sentenced\x18\x06 \x01(\x08\"0\n\x03\x45nt\x12\r\n\x05start\x18\x01 \x01(\x05\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x05\x12\r\n\x05label\x18\x03 \x01(\t\"\"\n\x04Sent\x12\r\n\x05start\x18\x01 \x01(\x05\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x05\"(\n\nNoun_chunk\x12\r\n\x05start\x18\x01 \x01(\x05\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x05\"\xca\x04\n\x05Token\x12\x0c\n\x04text\x18\x01 \x01(\t\x12\x14\n\x0ctext_with_ws\x18\x02 \x01(\t\x12\x12\n\nwhitespace\x18\x03 \x01(\t\x12\x10\n\x08\x65nt_type\x18\x05 \x01(\t\x12\x0f\n\x07\x65nt_iob\x18\x06 \x01(\t\x12\r\n\x05lemma\x18\x07 \x01(\t\x12\x0c\n\x04norm\x18\x08 \x01(\t\x12\r\n\x05lower\x18\t \x01(\t\x12\r\n\x05shape\x18\n \x01(\t\x12\x0e\n\x06prefix\x18\x0b \x01(\t\x12\x0e\n\x06suffix\x18\x0c \x01(\t\x12\x0b\n\x03pos\x18\r \x01(\t\x12\x0b\n\x03tag\x18\x0e \x01(\t\x12\x0b\n\x03\x64\x65p\x18\x0f \x01(\t\x12\x10\n\x08is_alpha\x18\x10 \x01(\x08\x12\x10\n\x08is_ascii\x18\x11 \x01(\x08\x12\x10\n\x08is_digit\x18\x12 \x01(\x08\x12\x10\n\x08is_lower\x18\x13 \x01(\x08\x12\x10\n\x08is_upper\x18\x14 \x01(\x08\x12\x10\n\x08is_title\x18\x15 \x01(\x08\x12\x10\n\x08is_punct\x18\x16 \x01(\x08\x12\x15\n\ris_left_punct\x18\x17 \x01(\x08\x12\x16\n\x0eis_right_punct\x18\x18 \x01(\x08\x12\x10\n\x08is_space\x18\x19 \x01(\x08\x12\x12\n\nis_bracket\x18\x1a \x01(\x08\x12\x13\n\x0bis_currency\x18\x1b \x01(\x08\x12\x10\n\x08like_url\x18\x1c \x01(\x08\x12\x10\n\x08like_num\x18\x1d \x01(\x08\x12\x12\n\nlike_email\x18\x1e \x01(\x08\x12\x0e\n\x06is_oov\x18\x1f \x01(\x08\x12\x0f\n\x07is_stop\x18  \x01(\x08\x12\x15\n\ris_sent_start\x18! \x01(\x08\x12\x0c\n\x04head\x18\" \x01(\x05\"\xa8\x01\n\x0cParsedNLPRes\x12\r\n\x05model\x18\x01 \x01(\t\x12\x15\n\x03\x64oc\x18\x02 \x01(\x0b\x32\x08.nlp.Doc\x12\x16\n\x04\x65nts\x18\x03 \x03(\x0b\x32\x08.nlp.Ent\x12\x18\n\x05sents\x18\x04 \x03(\x0b\x32\t.nlp.Sent\x12$\n\x0bnoun_chunks\x18\x05 \x03(\x0b\x32\x0f.nlp.Noun_chunk\x12\x1a\n\x06tokens\x18\x06 \x03(\x0b\x32\n.nlp.Token2\xb2\x01\n\x03Nlp\x12\x32\n\tLoadModel\x12\x10.nlp.TextRequest\x1a\x11.nlp.TextResponse\"\x00\x12\x33\n\nNlpProcess\x12\x10.nlp.TextRequest\x1a\x11.nlp.ParsedNLPRes\"\x00\x12\x42\n\rDocSimilarity\x12\x1a.nlp.TextSimilarityRequest\x1a\x13.nlp.TextSimilarity\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\tnlp.proto\x12\x03nlp\"\x1b\n\x0bTextRequest\x12\x0c\n\x04text\x18\x01 \x01(\t\"5\n\x15TextSimilarityRequest\x12\r\n\x05texta\x18\x01 \x01(\t\x12\r\n\x05textb\x18\x02 \x01(\t\"\x1f\n\x0cTextResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"$\n\x0eTextSimilarity\x12\x12\n\nsimilarity\x18\x01 \x01(\x02\"w\n\x03\x44oc\x12\x0c\n\x04text\x18\x01 \x01(\t\x12\x14\n\x0ctext_with_ws\x18\x02 \x01(\t\x12\x11\n\tis_tagged\x18\x03 \x01(\x08\x12\x11\n\tis_parsed\x18\x04 \x01(\x08\x12\x10\n\x08is_nered\x18\x05 \x01(\x08\x12\x14\n\x0cis_sentenced\x18\x06 \x01(\x08\"0\n\x03\x45nt\x12\r\n\x05start\x18\x01 \x01(\x05\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x05\x12\r\n\x05label\x18\x03 \x01(\t\"\"\n\x04Sent\x12\r\n\x05start\x18\x01 \x01(\x05\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x05\"(\n\nNoun_chunk\x12\r\n\x05start\x18\x01 \x01(\x05\x12\x0b\n\x03\x65nd\x18\x02 \x01(\x05\"\xca\x04\n\x05Token\x12\x0c\n\x04text\x18\x01 \x01(\t\x12\x14\n\x0ctext_with_ws\x18\x02 \x01(\t\x12\x12\n\nwhitespace\x18\x03 \x01(\t\x12\x10\n\x08\x65nt_type\x18\x05 \x01(\t\x12\x0f\n\x07\x65nt_iob\x18\x06 \x01(\t\x12\r\n\x05lemma\x18\x07 \x01(\t\x12\x0c\n\x04norm\x18\x08 \x01(\t\x12\r\n\x05lower\x18\t \x01(\t\x12\r\n\x05shape\x18\n \x01(\t\x12\x0e\n\x06prefix\x18\x0b \x01(\t\x12\x0e\n\x06suffix\x18\x0c \x01(\t\x12\x0b\n\x03pos\x18\r \x01(\t\x12\x0b\n\x03tag\x18\x0e \x01(\t\x12\x0b\n\x03\x64\x65p\x18\x0f \x01(\t\x12\x10\n\x08is_alpha\x18\x10 \x01(\x08\x12\x10\n\x08is_ascii\x18\x11 \x01(\x08\x12\x10\n\x08is_digit\x18\x12 \x01(\x08\x12\x10\n\x08is_lower\x18\x13 \x01(\x08\x12\x10\n\x08is_upper\x18\x14 \x01(\x08\x12\x10\n\x08is_title\x18\x15 \x01(\x08\x12\x10\n\x08is_punct\x18\x16 \x01(\x08\x12\x15\n\ris_left_punct\x18\x17 \x01(\x08\x12\x16\n\x0eis_right_punct\x18\x18 \x01(\x08\x12\x10\n\x08is_space\x18\x19 \x01(\x08\x12\x12\n\nis_bracket\x18\x1a \x01(\x08\x12\x13\n\x0bis_currency\x18\x1b \x01(\x08\x12\x10\n\x08like_url\x18\x1c \x01(\x08\x12\x10\n\x08like_num\x18\x1d \x01(\x08\x12\x12\n\nlike_email\x18\x1e \x01(\x08\x12\x0e\n\x06is_oov\x18\x1f \x01(\x08\x12\x0f\n\x07is_stop\x18  \x01(\x08\x12\x15\n\ris_sent_start\x18! \x01(\x08\x12\x0c\n\x04head\x18\" \x01(\x05\"\xa8\x01\n\x0cParsedNLPRes\x12\r\n\x05model\x18\x01 \x01(\t\x12\x15\n\x03\x64oc\x18\x02 \x01(\x0b\x32\x08.nlp.Doc\x12\x16\n\x04\x65nts\x18\x03 \x03(\x0b\x32\x08.nlp.Ent\x12\x18\n\x05sents\x18\x04 \x03(\x0b\x32\t.nlp.Sent\x12$\n\x0bnoun_chunks\x18\x05 \x03(\x0b\x32\x0f.nlp.Noun_chunk\x12\x1a\n\x06tokens\x18\x06 \x03(\x0b\x32\n.nlp.Token\"%\n\x07Pattern\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"2\n\x04Rule\x12\n\n\x02id\x18\x01 \x01(\t\x12\x1e\n\x08patterns\x18\x02 \x03(\x0b\x32\x0c.nlp.Pattern\"/\n\x05Match\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05start\x18\x02 \x01(\x05\x12\x0b\n\x03\x65nd\x18\x03 \x01(\x05\"&\n\x07Matches\x12\x1b\n\x07matches\x18\x01 \x03(\x0b\x32\n.nlp.Match2\xec\x02\n\x03Nlp\x12\x32\n\tLoadModel\x12\x10.nlp.TextRequest\x1a\x11.nlp.TextResponse\"\x00\x12\x33\n\nNlpProcess\x12\x10.nlp.TextRequest\x1a\x11.nlp.ParsedNLPRes\"\x00\x12\x42\n\rDocSimilarity\x12\x1a.nlp.TextSimilarityRequest\x1a\x13.nlp.TextSimilarity\"\x00\x12)\n\x07\x41\x64\x64Rule\x12\t.nlp.Rule\x1a\x11.nlp.TextResponse\"\x00\x12\x33\n\nRemoveRule\x12\x10.nlp.TextRequest\x1a\x11.nlp.TextResponse\"\x00\x12(\n\x07GetRule\x12\x10.nlp.TextRequest\x1a\t.nlp.Rule\"\x00\x12.\n\nGetMatches\x12\x10.nlp.TextRequest\x1a\x0c.nlp.Matches\"\x00\x62\x06proto3'
 )
 
 
@@ -662,11 +662,165 @@ _PARSEDNLPRES = _descriptor.Descriptor(
   serialized_end=1180,
 )
 
+
+_PATTERN = _descriptor.Descriptor(
+  name='Pattern',
+  full_name='nlp.Pattern',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='nlp.Pattern.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='nlp.Pattern.value', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1182,
+  serialized_end=1219,
+)
+
+
+_RULE = _descriptor.Descriptor(
+  name='Rule',
+  full_name='nlp.Rule',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='nlp.Rule.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='patterns', full_name='nlp.Rule.patterns', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1221,
+  serialized_end=1271,
+)
+
+
+_MATCH = _descriptor.Descriptor(
+  name='Match',
+  full_name='nlp.Match',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='nlp.Match.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='start', full_name='nlp.Match.start', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='end', full_name='nlp.Match.end', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1273,
+  serialized_end=1320,
+)
+
+
+_MATCHES = _descriptor.Descriptor(
+  name='Matches',
+  full_name='nlp.Matches',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='matches', full_name='nlp.Matches.matches', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1322,
+  serialized_end=1360,
+)
+
 _PARSEDNLPRES.fields_by_name['doc'].message_type = _DOC
 _PARSEDNLPRES.fields_by_name['ents'].message_type = _ENT
 _PARSEDNLPRES.fields_by_name['sents'].message_type = _SENT
 _PARSEDNLPRES.fields_by_name['noun_chunks'].message_type = _NOUN_CHUNK
 _PARSEDNLPRES.fields_by_name['tokens'].message_type = _TOKEN
+_RULE.fields_by_name['patterns'].message_type = _PATTERN
+_MATCHES.fields_by_name['matches'].message_type = _MATCH
 DESCRIPTOR.message_types_by_name['TextRequest'] = _TEXTREQUEST
 DESCRIPTOR.message_types_by_name['TextSimilarityRequest'] = _TEXTSIMILARITYREQUEST
 DESCRIPTOR.message_types_by_name['TextResponse'] = _TEXTRESPONSE
@@ -677,6 +831,10 @@ DESCRIPTOR.message_types_by_name['Sent'] = _SENT
 DESCRIPTOR.message_types_by_name['Noun_chunk'] = _NOUN_CHUNK
 DESCRIPTOR.message_types_by_name['Token'] = _TOKEN
 DESCRIPTOR.message_types_by_name['ParsedNLPRes'] = _PARSEDNLPRES
+DESCRIPTOR.message_types_by_name['Pattern'] = _PATTERN
+DESCRIPTOR.message_types_by_name['Rule'] = _RULE
+DESCRIPTOR.message_types_by_name['Match'] = _MATCH
+DESCRIPTOR.message_types_by_name['Matches'] = _MATCHES
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 TextRequest = _reflection.GeneratedProtocolMessageType('TextRequest', (_message.Message,), {
@@ -749,6 +907,34 @@ ParsedNLPRes = _reflection.GeneratedProtocolMessageType('ParsedNLPRes', (_messag
   })
 _sym_db.RegisterMessage(ParsedNLPRes)
 
+Pattern = _reflection.GeneratedProtocolMessageType('Pattern', (_message.Message,), {
+  'DESCRIPTOR' : _PATTERN,
+  '__module__' : 'nlp_pb2'
+  # @@protoc_insertion_point(class_scope:nlp.Pattern)
+  })
+_sym_db.RegisterMessage(Pattern)
+
+Rule = _reflection.GeneratedProtocolMessageType('Rule', (_message.Message,), {
+  'DESCRIPTOR' : _RULE,
+  '__module__' : 'nlp_pb2'
+  # @@protoc_insertion_point(class_scope:nlp.Rule)
+  })
+_sym_db.RegisterMessage(Rule)
+
+Match = _reflection.GeneratedProtocolMessageType('Match', (_message.Message,), {
+  'DESCRIPTOR' : _MATCH,
+  '__module__' : 'nlp_pb2'
+  # @@protoc_insertion_point(class_scope:nlp.Match)
+  })
+_sym_db.RegisterMessage(Match)
+
+Matches = _reflection.GeneratedProtocolMessageType('Matches', (_message.Message,), {
+  'DESCRIPTOR' : _MATCHES,
+  '__module__' : 'nlp_pb2'
+  # @@protoc_insertion_point(class_scope:nlp.Matches)
+  })
+_sym_db.RegisterMessage(Matches)
+
 
 
 _NLP = _descriptor.ServiceDescriptor(
@@ -757,8 +943,8 @@ _NLP = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1183,
-  serialized_end=1361,
+  serialized_start=1363,
+  serialized_end=1727,
   methods=[
   _descriptor.MethodDescriptor(
     name='LoadModel',
@@ -785,6 +971,42 @@ _NLP = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_TEXTSIMILARITYREQUEST,
     output_type=_TEXTSIMILARITY,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='AddRule',
+    full_name='nlp.Nlp.AddRule',
+    index=3,
+    containing_service=None,
+    input_type=_RULE,
+    output_type=_TEXTRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='RemoveRule',
+    full_name='nlp.Nlp.RemoveRule',
+    index=4,
+    containing_service=None,
+    input_type=_TEXTREQUEST,
+    output_type=_TEXTRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetRule',
+    full_name='nlp.Nlp.GetRule',
+    index=5,
+    containing_service=None,
+    input_type=_TEXTREQUEST,
+    output_type=_RULE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetMatches',
+    full_name='nlp.Nlp.GetMatches',
+    index=6,
+    containing_service=None,
+    input_type=_TEXTREQUEST,
+    output_type=_MATCHES,
     serialized_options=None,
   ),
 ])

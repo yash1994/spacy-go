@@ -28,6 +28,26 @@ class NlpStub(object):
                 request_serializer=nlp__pb2.TextSimilarityRequest.SerializeToString,
                 response_deserializer=nlp__pb2.TextSimilarity.FromString,
                 )
+        self.AddRule = channel.unary_unary(
+                '/nlp.Nlp/AddRule',
+                request_serializer=nlp__pb2.Rule.SerializeToString,
+                response_deserializer=nlp__pb2.TextResponse.FromString,
+                )
+        self.RemoveRule = channel.unary_unary(
+                '/nlp.Nlp/RemoveRule',
+                request_serializer=nlp__pb2.TextRequest.SerializeToString,
+                response_deserializer=nlp__pb2.TextResponse.FromString,
+                )
+        self.GetRule = channel.unary_unary(
+                '/nlp.Nlp/GetRule',
+                request_serializer=nlp__pb2.TextRequest.SerializeToString,
+                response_deserializer=nlp__pb2.Rule.FromString,
+                )
+        self.GetMatches = channel.unary_unary(
+                '/nlp.Nlp/GetMatches',
+                request_serializer=nlp__pb2.TextRequest.SerializeToString,
+                response_deserializer=nlp__pb2.Matches.FromString,
+                )
 
 
 class NlpServicer(object):
@@ -51,6 +71,30 @@ class NlpServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def AddRule(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def RemoveRule(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetRule(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetMatches(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_NlpServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -68,6 +112,26 @@ def add_NlpServicer_to_server(servicer, server):
                     servicer.DocSimilarity,
                     request_deserializer=nlp__pb2.TextSimilarityRequest.FromString,
                     response_serializer=nlp__pb2.TextSimilarity.SerializeToString,
+            ),
+            'AddRule': grpc.unary_unary_rpc_method_handler(
+                    servicer.AddRule,
+                    request_deserializer=nlp__pb2.Rule.FromString,
+                    response_serializer=nlp__pb2.TextResponse.SerializeToString,
+            ),
+            'RemoveRule': grpc.unary_unary_rpc_method_handler(
+                    servicer.RemoveRule,
+                    request_deserializer=nlp__pb2.TextRequest.FromString,
+                    response_serializer=nlp__pb2.TextResponse.SerializeToString,
+            ),
+            'GetRule': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetRule,
+                    request_deserializer=nlp__pb2.TextRequest.FromString,
+                    response_serializer=nlp__pb2.Rule.SerializeToString,
+            ),
+            'GetMatches': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetMatches,
+                    request_deserializer=nlp__pb2.TextRequest.FromString,
+                    response_serializer=nlp__pb2.Matches.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -124,5 +188,69 @@ class Nlp(object):
         return grpc.experimental.unary_unary(request, target, '/nlp.Nlp/DocSimilarity',
             nlp__pb2.TextSimilarityRequest.SerializeToString,
             nlp__pb2.TextSimilarity.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AddRule(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/nlp.Nlp/AddRule',
+            nlp__pb2.Rule.SerializeToString,
+            nlp__pb2.TextResponse.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def RemoveRule(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/nlp.Nlp/RemoveRule',
+            nlp__pb2.TextRequest.SerializeToString,
+            nlp__pb2.TextResponse.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetRule(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/nlp.Nlp/GetRule',
+            nlp__pb2.TextRequest.SerializeToString,
+            nlp__pb2.Rule.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetMatches(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/nlp.Nlp/GetMatches',
+            nlp__pb2.TextRequest.SerializeToString,
+            nlp__pb2.Matches.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
