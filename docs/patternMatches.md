@@ -6,7 +6,7 @@ Matches is type of `struct` returned when `PatternMatch` method is called.
 
 | Name | Type | Access Method | Return Type | Description |
 | ---- | -----| ------------- | ----------- | ----------- |
-| `Matches` | `Array` | `GetMatches()` | `Array` of [`Match`](https://github.com/yash1994/spacy-go/blob/master/docs/docs/patternMatches.md#match) | Contains `Array` of type [`Match`](https://github.com/yash1994/spacy-go/blob/master/docs/docs/patternMatches.md#match) (list of matched tokens). |
+| `Matches` | `Array` | `GetMatches()` | `Array` of [`Match`](https://github.com/yash1994/spacy-go/blob/master/docs/patternMatches.md#match) | Contains `Array` of type [`Match`](https://github.com/yash1994/spacy-go/blob/master/docs/patternMatches.md#match) (list of matched tokens). |
 
 # Match
 
