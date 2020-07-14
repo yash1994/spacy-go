@@ -13,6 +13,15 @@ import (
 	"google.golang.org/grpc/credentials"
 )
 
+type pattern struct {
+	key, value string
+}
+
+type rule struct {
+	id       string
+	patterns []pattern
+}
+
 const (
 	serverAddr   string = "localhost:50051"
 	defaultModel string = "en_core_web_sm"
@@ -63,6 +72,54 @@ func Similarity(texta string, textb string) (r *pb.TextSimilarity, err error) {
 		return nil, err
 	}
 	return r, nil
+}
+
+// PatternMatch : Match sequences of tokens, based on pattern rules
+func PatternMatch(matchrules []rule, text string) (r *pb.Matches, err error) {
+	for _, mrule := range matchrules {
+
+		var tempRuleArray []*pb.Pattern
+
+		for _, pat := range mrule.patterns {
+			patpb := &pb.Pattern{Key: pat.key, Value: pat.value}
+			tempRuleArray = append(tempRuleArray, patpb)
+		}
+		rulepb := &pb.Rule{Id: mrule.id, Patterns: tempRuleArray}
+
+		arctx, arcancle := context.WithTimeout(context.Background(), time.Second)
+		defer arcancle()
+
+		arresp, arerror := grpcClient.AddRule(arctx, rulepb)
+
+		if arerror != nil {
+			log.Fatalf("Add rule error: %v", arerror.Error())
+		} else {
+			log.Printf("%v", arresp.GetMessage())
+		}
+
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+
+	r, err = grpcClient.GetMatches(ctx, &pb.TextRequest{Text: text})
+
+	rsctx, rscancel := context.WithTimeout(context.Background(), time.Second)
+
+	resetresp, reseterr := grpcClient.ResetMatcher(rsctx, &pb.TextRequest{Text: ""})
+	defer rscancel()
+
+	if reseterr != nil {
+		log.Fatalf("Reset Matcher error: %v", reseterr.Error())
+	} else {
+		log.Printf("%v", resetresp.GetMessage())
+	}
+
+	if err != nil {
+		return nil, err
+	}
+
+	return r, nil
+
 }
 
 func init() {

@@ -875,6 +875,226 @@ func (x *ParsedNLPRes) GetTokens() []*Token {
 	return nil
 }
 
+type Pattern struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Key   string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+}
+
+func (x *Pattern) Reset() {
+	*x = Pattern{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_nlp_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Pattern) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Pattern) ProtoMessage() {}
+
+func (x *Pattern) ProtoReflect() protoreflect.Message {
+	mi := &file_nlp_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Pattern.ProtoReflect.Descriptor instead.
+func (*Pattern) Descriptor() ([]byte, []int) {
+	return file_nlp_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *Pattern) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Pattern) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
+type Rule struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id       string     `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Patterns []*Pattern `protobuf:"bytes,2,rep,name=patterns,proto3" json:"patterns,omitempty"`
+}
+
+func (x *Rule) Reset() {
+	*x = Rule{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_nlp_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Rule) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Rule) ProtoMessage() {}
+
+func (x *Rule) ProtoReflect() protoreflect.Message {
+	mi := &file_nlp_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Rule.ProtoReflect.Descriptor instead.
+func (*Rule) Descriptor() ([]byte, []int) {
+	return file_nlp_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *Rule) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Rule) GetPatterns() []*Pattern {
+	if x != nil {
+		return x.Patterns
+	}
+	return nil
+}
+
+type Match struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id    string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Start int32  `protobuf:"varint,2,opt,name=start,proto3" json:"start,omitempty"`
+	End   int32  `protobuf:"varint,3,opt,name=end,proto3" json:"end,omitempty"`
+}
+
+func (x *Match) Reset() {
+	*x = Match{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_nlp_proto_msgTypes[12]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Match) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Match) ProtoMessage() {}
+
+func (x *Match) ProtoReflect() protoreflect.Message {
+	mi := &file_nlp_proto_msgTypes[12]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Match.ProtoReflect.Descriptor instead.
+func (*Match) Descriptor() ([]byte, []int) {
+	return file_nlp_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *Match) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *Match) GetStart() int32 {
+	if x != nil {
+		return x.Start
+	}
+	return 0
+}
+
+func (x *Match) GetEnd() int32 {
+	if x != nil {
+		return x.End
+	}
+	return 0
+}
+
+type Matches struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Matches []*Match `protobuf:"bytes,1,rep,name=matches,proto3" json:"matches,omitempty"`
+}
+
+func (x *Matches) Reset() {
+	*x = Matches{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_nlp_proto_msgTypes[13]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Matches) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Matches) ProtoMessage() {}
+
+func (x *Matches) ProtoReflect() protoreflect.Message {
+	mi := &file_nlp_proto_msgTypes[13]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Matches.ProtoReflect.Descriptor instead.
+func (*Matches) Descriptor() ([]byte, []int) {
+	return file_nlp_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *Matches) GetMatches() []*Match {
+	if x != nil {
+		return x.Matches
+	}
+	return nil
+}
+
 var File_nlp_proto protoreflect.FileDescriptor
 
 var file_nlp_proto_rawDesc = []byte{
@@ -981,19 +1201,49 @@ var file_nlp_proto_rawDesc = []byte{
 	0x70, 0x2e, 0x4e, 0x6f, 0x75, 0x6e, 0x5f, 0x63, 0x68, 0x75, 0x6e, 0x6b, 0x52, 0x0a, 0x6e, 0x6f,
 	0x75, 0x6e, 0x43, 0x68, 0x75, 0x6e, 0x6b, 0x73, 0x12, 0x22, 0x0a, 0x06, 0x74, 0x6f, 0x6b, 0x65,
 	0x6e, 0x73, 0x18, 0x06, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54,
-	0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x06, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x73, 0x32, 0xb2, 0x01, 0x0a,
-	0x03, 0x4e, 0x6c, 0x70, 0x12, 0x32, 0x0a, 0x09, 0x4c, 0x6f, 0x61, 0x64, 0x4d, 0x6f, 0x64, 0x65,
-	0x6c, 0x12, 0x10, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78, 0x74, 0x52, 0x65, 0x71, 0x75,
+	0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x06, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x73, 0x22, 0x31, 0x0a, 0x07,
+	0x50, 0x61, 0x74, 0x74, 0x65, 0x72, 0x6e, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c,
+	0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x22,
+	0x40, 0x0a, 0x04, 0x52, 0x75, 0x6c, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x28, 0x0a, 0x08, 0x70, 0x61, 0x74, 0x74, 0x65,
+	0x72, 0x6e, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0c, 0x2e, 0x6e, 0x6c, 0x70, 0x2e,
+	0x50, 0x61, 0x74, 0x74, 0x65, 0x72, 0x6e, 0x52, 0x08, 0x70, 0x61, 0x74, 0x74, 0x65, 0x72, 0x6e,
+	0x73, 0x22, 0x3f, 0x0a, 0x05, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74,
+	0x61, 0x72, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x73, 0x74, 0x61, 0x72, 0x74,
+	0x12, 0x10, 0x0a, 0x03, 0x65, 0x6e, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x65,
+	0x6e, 0x64, 0x22, 0x2f, 0x0a, 0x07, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x65, 0x73, 0x12, 0x24, 0x0a,
+	0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0a,
+	0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x52, 0x07, 0x6d, 0x61, 0x74, 0x63,
+	0x68, 0x65, 0x73, 0x32, 0xa3, 0x03, 0x0a, 0x03, 0x4e, 0x6c, 0x70, 0x12, 0x32, 0x0a, 0x09, 0x4c,
+	0x6f, 0x61, 0x64, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x12, 0x10, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54,
+	0x65, 0x78, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x11, 0x2e, 0x6e, 0x6c, 0x70,
+	0x2e, 0x54, 0x65, 0x78, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12,
+	0x33, 0x0a, 0x0a, 0x4e, 0x6c, 0x70, 0x50, 0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x12, 0x10, 0x2e,
+	0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x11, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x50, 0x61, 0x72, 0x73, 0x65, 0x64, 0x4e, 0x4c, 0x50, 0x52,
+	0x65, 0x73, 0x22, 0x00, 0x12, 0x42, 0x0a, 0x0d, 0x44, 0x6f, 0x63, 0x53, 0x69, 0x6d, 0x69, 0x6c,
+	0x61, 0x72, 0x69, 0x74, 0x79, 0x12, 0x1a, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78, 0x74,
+	0x53, 0x69, 0x6d, 0x69, 0x6c, 0x61, 0x72, 0x69, 0x74, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x13, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78, 0x74, 0x53, 0x69, 0x6d, 0x69,
+	0x6c, 0x61, 0x72, 0x69, 0x74, 0x79, 0x22, 0x00, 0x12, 0x29, 0x0a, 0x07, 0x41, 0x64, 0x64, 0x52,
+	0x75, 0x6c, 0x65, 0x12, 0x09, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x52, 0x75, 0x6c, 0x65, 0x1a, 0x11,
+	0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x22, 0x00, 0x12, 0x33, 0x0a, 0x0a, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x52, 0x75, 0x6c,
+	0x65, 0x12, 0x10, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78, 0x74, 0x52, 0x65, 0x71, 0x75,
 	0x65, 0x73, 0x74, 0x1a, 0x11, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78, 0x74, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x33, 0x0a, 0x0a, 0x4e, 0x6c, 0x70, 0x50,
-	0x72, 0x6f, 0x63, 0x65, 0x73, 0x73, 0x12, 0x10, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78,
-	0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x11, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x50,
-	0x61, 0x72, 0x73, 0x65, 0x64, 0x4e, 0x4c, 0x50, 0x52, 0x65, 0x73, 0x22, 0x00, 0x12, 0x42, 0x0a,
-	0x0d, 0x44, 0x6f, 0x63, 0x53, 0x69, 0x6d, 0x69, 0x6c, 0x61, 0x72, 0x69, 0x74, 0x79, 0x12, 0x1a,
-	0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78, 0x74, 0x53, 0x69, 0x6d, 0x69, 0x6c, 0x61, 0x72,
-	0x69, 0x74, 0x79, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x13, 0x2e, 0x6e, 0x6c, 0x70,
-	0x2e, 0x54, 0x65, 0x78, 0x74, 0x53, 0x69, 0x6d, 0x69, 0x6c, 0x61, 0x72, 0x69, 0x74, 0x79, 0x22,
-	0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x28, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x52,
+	0x75, 0x6c, 0x65, 0x12, 0x10, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78, 0x74, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x09, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x52, 0x75, 0x6c, 0x65,
+	0x22, 0x00, 0x12, 0x2e, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x65, 0x73,
+	0x12, 0x10, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x0c, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x4d, 0x61, 0x74, 0x63, 0x68, 0x65, 0x73,
+	0x22, 0x00, 0x12, 0x35, 0x0a, 0x0c, 0x52, 0x65, 0x73, 0x65, 0x74, 0x4d, 0x61, 0x74, 0x63, 0x68,
+	0x65, 0x72, 0x12, 0x10, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78, 0x74, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x1a, 0x11, 0x2e, 0x6e, 0x6c, 0x70, 0x2e, 0x54, 0x65, 0x78, 0x74, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var (
@@ -1008,7 +1258,7 @@ func file_nlp_proto_rawDescGZIP() []byte {
 	return file_nlp_proto_rawDescData
 }
 
-var file_nlp_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_nlp_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_nlp_proto_goTypes = []interface{}{
 	(*TextRequest)(nil),           // 0: nlp.TextRequest
 	(*TextSimilarityRequest)(nil), // 1: nlp.TextSimilarityRequest
@@ -1020,24 +1270,40 @@ var file_nlp_proto_goTypes = []interface{}{
 	(*NounChunk)(nil),             // 7: nlp.Noun_chunk
 	(*Token)(nil),                 // 8: nlp.Token
 	(*ParsedNLPRes)(nil),          // 9: nlp.ParsedNLPRes
+	(*Pattern)(nil),               // 10: nlp.Pattern
+	(*Rule)(nil),                  // 11: nlp.Rule
+	(*Match)(nil),                 // 12: nlp.Match
+	(*Matches)(nil),               // 13: nlp.Matches
 }
 var file_nlp_proto_depIdxs = []int32{
-	4, // 0: nlp.ParsedNLPRes.doc:type_name -> nlp.Doc
-	5, // 1: nlp.ParsedNLPRes.ents:type_name -> nlp.Ent
-	6, // 2: nlp.ParsedNLPRes.sents:type_name -> nlp.Sent
-	7, // 3: nlp.ParsedNLPRes.noun_chunks:type_name -> nlp.Noun_chunk
-	8, // 4: nlp.ParsedNLPRes.tokens:type_name -> nlp.Token
-	0, // 5: nlp.Nlp.LoadModel:input_type -> nlp.TextRequest
-	0, // 6: nlp.Nlp.NlpProcess:input_type -> nlp.TextRequest
-	1, // 7: nlp.Nlp.DocSimilarity:input_type -> nlp.TextSimilarityRequest
-	2, // 8: nlp.Nlp.LoadModel:output_type -> nlp.TextResponse
-	9, // 9: nlp.Nlp.NlpProcess:output_type -> nlp.ParsedNLPRes
-	3, // 10: nlp.Nlp.DocSimilarity:output_type -> nlp.TextSimilarity
-	8, // [8:11] is the sub-list for method output_type
-	5, // [5:8] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	4,  // 0: nlp.ParsedNLPRes.doc:type_name -> nlp.Doc
+	5,  // 1: nlp.ParsedNLPRes.ents:type_name -> nlp.Ent
+	6,  // 2: nlp.ParsedNLPRes.sents:type_name -> nlp.Sent
+	7,  // 3: nlp.ParsedNLPRes.noun_chunks:type_name -> nlp.Noun_chunk
+	8,  // 4: nlp.ParsedNLPRes.tokens:type_name -> nlp.Token
+	10, // 5: nlp.Rule.patterns:type_name -> nlp.Pattern
+	12, // 6: nlp.Matches.matches:type_name -> nlp.Match
+	0,  // 7: nlp.Nlp.LoadModel:input_type -> nlp.TextRequest
+	0,  // 8: nlp.Nlp.NlpProcess:input_type -> nlp.TextRequest
+	1,  // 9: nlp.Nlp.DocSimilarity:input_type -> nlp.TextSimilarityRequest
+	11, // 10: nlp.Nlp.AddRule:input_type -> nlp.Rule
+	0,  // 11: nlp.Nlp.RemoveRule:input_type -> nlp.TextRequest
+	0,  // 12: nlp.Nlp.GetRule:input_type -> nlp.TextRequest
+	0,  // 13: nlp.Nlp.GetMatches:input_type -> nlp.TextRequest
+	0,  // 14: nlp.Nlp.ResetMatcher:input_type -> nlp.TextRequest
+	2,  // 15: nlp.Nlp.LoadModel:output_type -> nlp.TextResponse
+	9,  // 16: nlp.Nlp.NlpProcess:output_type -> nlp.ParsedNLPRes
+	3,  // 17: nlp.Nlp.DocSimilarity:output_type -> nlp.TextSimilarity
+	2,  // 18: nlp.Nlp.AddRule:output_type -> nlp.TextResponse
+	2,  // 19: nlp.Nlp.RemoveRule:output_type -> nlp.TextResponse
+	11, // 20: nlp.Nlp.GetRule:output_type -> nlp.Rule
+	13, // 21: nlp.Nlp.GetMatches:output_type -> nlp.Matches
+	2,  // 22: nlp.Nlp.ResetMatcher:output_type -> nlp.TextResponse
+	15, // [15:23] is the sub-list for method output_type
+	7,  // [7:15] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_nlp_proto_init() }
@@ -1166,6 +1432,54 @@ func file_nlp_proto_init() {
 				return nil
 			}
 		}
+		file_nlp_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Pattern); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_nlp_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Rule); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_nlp_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Match); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_nlp_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Matches); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1173,7 +1487,7 @@ func file_nlp_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_nlp_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -1202,6 +1516,11 @@ type NlpClient interface {
 	LoadModel(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*TextResponse, error)
 	NlpProcess(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*ParsedNLPRes, error)
 	DocSimilarity(ctx context.Context, in *TextSimilarityRequest, opts ...grpc.CallOption) (*TextSimilarity, error)
+	AddRule(ctx context.Context, in *Rule, opts ...grpc.CallOption) (*TextResponse, error)
+	RemoveRule(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*TextResponse, error)
+	GetRule(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*Rule, error)
+	GetMatches(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*Matches, error)
+	ResetMatcher(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*TextResponse, error)
 }
 
 type nlpClient struct {
@@ -1239,11 +1558,61 @@ func (c *nlpClient) DocSimilarity(ctx context.Context, in *TextSimilarityRequest
 	return out, nil
 }
 
+func (c *nlpClient) AddRule(ctx context.Context, in *Rule, opts ...grpc.CallOption) (*TextResponse, error) {
+	out := new(TextResponse)
+	err := c.cc.Invoke(ctx, "/nlp.Nlp/AddRule", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *nlpClient) RemoveRule(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*TextResponse, error) {
+	out := new(TextResponse)
+	err := c.cc.Invoke(ctx, "/nlp.Nlp/RemoveRule", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *nlpClient) GetRule(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*Rule, error) {
+	out := new(Rule)
+	err := c.cc.Invoke(ctx, "/nlp.Nlp/GetRule", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *nlpClient) GetMatches(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*Matches, error) {
+	out := new(Matches)
+	err := c.cc.Invoke(ctx, "/nlp.Nlp/GetMatches", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *nlpClient) ResetMatcher(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*TextResponse, error) {
+	out := new(TextResponse)
+	err := c.cc.Invoke(ctx, "/nlp.Nlp/ResetMatcher", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // NlpServer is the server API for Nlp service.
 type NlpServer interface {
 	LoadModel(context.Context, *TextRequest) (*TextResponse, error)
 	NlpProcess(context.Context, *TextRequest) (*ParsedNLPRes, error)
 	DocSimilarity(context.Context, *TextSimilarityRequest) (*TextSimilarity, error)
+	AddRule(context.Context, *Rule) (*TextResponse, error)
+	RemoveRule(context.Context, *TextRequest) (*TextResponse, error)
+	GetRule(context.Context, *TextRequest) (*Rule, error)
+	GetMatches(context.Context, *TextRequest) (*Matches, error)
+	ResetMatcher(context.Context, *TextRequest) (*TextResponse, error)
 }
 
 // UnimplementedNlpServer can be embedded to have forward compatible implementations.
@@ -1258,6 +1627,21 @@ func (*UnimplementedNlpServer) NlpProcess(context.Context, *TextRequest) (*Parse
 }
 func (*UnimplementedNlpServer) DocSimilarity(context.Context, *TextSimilarityRequest) (*TextSimilarity, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DocSimilarity not implemented")
+}
+func (*UnimplementedNlpServer) AddRule(context.Context, *Rule) (*TextResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddRule not implemented")
+}
+func (*UnimplementedNlpServer) RemoveRule(context.Context, *TextRequest) (*TextResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveRule not implemented")
+}
+func (*UnimplementedNlpServer) GetRule(context.Context, *TextRequest) (*Rule, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRule not implemented")
+}
+func (*UnimplementedNlpServer) GetMatches(context.Context, *TextRequest) (*Matches, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMatches not implemented")
+}
+func (*UnimplementedNlpServer) ResetMatcher(context.Context, *TextRequest) (*TextResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ResetMatcher not implemented")
 }
 
 func RegisterNlpServer(s *grpc.Server, srv NlpServer) {
@@ -1318,6 +1702,96 @@ func _Nlp_DocSimilarity_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Nlp_AddRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Rule)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NlpServer).AddRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/nlp.Nlp/AddRule",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NlpServer).AddRule(ctx, req.(*Rule))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Nlp_RemoveRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TextRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NlpServer).RemoveRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/nlp.Nlp/RemoveRule",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NlpServer).RemoveRule(ctx, req.(*TextRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Nlp_GetRule_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TextRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NlpServer).GetRule(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/nlp.Nlp/GetRule",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NlpServer).GetRule(ctx, req.(*TextRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Nlp_GetMatches_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TextRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NlpServer).GetMatches(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/nlp.Nlp/GetMatches",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NlpServer).GetMatches(ctx, req.(*TextRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Nlp_ResetMatcher_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TextRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NlpServer).ResetMatcher(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/nlp.Nlp/ResetMatcher",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NlpServer).ResetMatcher(ctx, req.(*TextRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Nlp_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "nlp.Nlp",
 	HandlerType: (*NlpServer)(nil),
@@ -1333,6 +1807,26 @@ var _Nlp_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DocSimilarity",
 			Handler:    _Nlp_DocSimilarity_Handler,
+		},
+		{
+			MethodName: "AddRule",
+			Handler:    _Nlp_AddRule_Handler,
+		},
+		{
+			MethodName: "RemoveRule",
+			Handler:    _Nlp_RemoveRule_Handler,
+		},
+		{
+			MethodName: "GetRule",
+			Handler:    _Nlp_GetRule_Handler,
+		},
+		{
+			MethodName: "GetMatches",
+			Handler:    _Nlp_GetMatches_Handler,
+		},
+		{
+			MethodName: "ResetMatcher",
+			Handler:    _Nlp_ResetMatcher_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

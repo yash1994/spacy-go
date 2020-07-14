@@ -10,6 +10,7 @@ service Nlp {
     rpc RemoveRule (TextRequest) returns (TextResponse) {}
     rpc GetRule (TextRequest) returns (Rule) {}
     rpc GetMatches (TextRequest) returns (Matches) {}
+    rpc ResetMatcher (TextRequest) returns (TextResponse) {}
 }
 
 message TextRequest {

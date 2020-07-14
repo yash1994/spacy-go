@@ -108,3 +108,10 @@ def test_get_matches(grpc_stub_cls):
     assert response.matches[0].end == 2
     assert response.matches[1].start == 3
     assert response.matches[1].end == 5
+
+
+def test_reset_matcher(grpc_stub_cls):
+    request = TextRequest(text="")
+    response = grpc_stub_cls.ResetMatcher(request)
+    
+    assert response.message == "Matcher object reset successful."

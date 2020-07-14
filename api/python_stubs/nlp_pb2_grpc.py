@@ -48,6 +48,11 @@ class NlpStub(object):
                 request_serializer=nlp__pb2.TextRequest.SerializeToString,
                 response_deserializer=nlp__pb2.Matches.FromString,
                 )
+        self.ResetMatcher = channel.unary_unary(
+                '/nlp.Nlp/ResetMatcher',
+                request_serializer=nlp__pb2.TextRequest.SerializeToString,
+                response_deserializer=nlp__pb2.TextResponse.FromString,
+                )
 
 
 class NlpServicer(object):
@@ -95,6 +100,12 @@ class NlpServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ResetMatcher(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_NlpServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -132,6 +143,11 @@ def add_NlpServicer_to_server(servicer, server):
                     servicer.GetMatches,
                     request_deserializer=nlp__pb2.TextRequest.FromString,
                     response_serializer=nlp__pb2.Matches.SerializeToString,
+            ),
+            'ResetMatcher': grpc.unary_unary_rpc_method_handler(
+                    servicer.ResetMatcher,
+                    request_deserializer=nlp__pb2.TextRequest.FromString,
+                    response_serializer=nlp__pb2.TextResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -252,5 +268,21 @@ class Nlp(object):
         return grpc.experimental.unary_unary(request, target, '/nlp.Nlp/GetMatches',
             nlp__pb2.TextRequest.SerializeToString,
             nlp__pb2.Matches.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ResetMatcher(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/nlp.Nlp/ResetMatcher',
+            nlp__pb2.TextRequest.SerializeToString,
+            nlp__pb2.TextResponse.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)

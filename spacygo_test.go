@@ -424,3 +424,36 @@ func TestDocSimilarity(t *testing.T) {
 		t.Errorf("failed TestDocSimilarity: %v", err.Error())
 	}
 }
+
+func TestMatcher(t *testing.T) {
+	var testRules []rule
+	var testRule rule
+	testRule.id = "HelloWorld"
+	var testPattern1, testPattern2 pattern
+	testPattern1.key = "LOWER"
+	testPattern1.value = "hello"
+	testPattern2.key = "LOWER"
+	testPattern2.value = "world"
+
+	testRule.patterns = append(testRule.patterns, testPattern1, testPattern2)
+	testRules = append(testRules, testRule)
+
+	r, err := PatternMatch(testRules, "HELLO WORLD on Google Maps.")
+
+	if r.GetMatches()[0].GetStart() == 0 {
+		t.Logf("passed patternMatch.matches[0].start: %v == %v", r.GetMatches()[0].GetStart(), 0)
+	} else {
+		t.Errorf("failed patternMatch.matches[0].start: %v != %v", r.GetMatches()[0].GetStart(), 0)
+	}
+
+	if r.GetMatches()[0].GetEnd() == 2 {
+		t.Logf("passed patternMatch.matches[0].end: %v == %v", r.GetMatches()[0].GetEnd(), 2)
+	} else {
+		t.Errorf("failed patternMatch.matches[0].end: %v != %v", r.GetMatches()[0].GetEnd(), 2)
+	}
+
+	if err != nil {
+		t.Errorf("failed TestMatcher: %v", err.Error())
+	}
+
+}
