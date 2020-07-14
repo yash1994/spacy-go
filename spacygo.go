@@ -92,7 +92,7 @@ func PatternMatch(matchrules []rule, text string) (r *pb.Matches, err error) {
 		arresp, arerror := grpcClient.AddRule(arctx, rulepb)
 
 		if arerror != nil {
-			log.Fatalf("Add rule error: %v", arerror.Error())
+			log.Printf("Add rule error: %v", arerror.Error())
 		} else {
 			log.Printf("%v", arresp.GetMessage())
 		}
@@ -105,12 +105,10 @@ func PatternMatch(matchrules []rule, text string) (r *pb.Matches, err error) {
 
 	rsctx, rscancel := context.WithTimeout(context.Background(), time.Second)
 
-	resetresp, reseterr := grpcClient.ResetMatcher(rsctx, &pb.TextRequest{Text: ""})
+	resetresp, _ := grpcClient.ResetMatcher(rsctx, &pb.TextRequest{Text: ""})
 	defer rscancel()
 
-	if reseterr != nil {
-		log.Fatalf("Reset Matcher error: %v", reseterr.Error())
-	} else {
+	if resetresp != nil {
 		log.Printf("%v", resetresp.GetMessage())
 	}
 

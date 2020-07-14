@@ -26,6 +26,10 @@ Before importing the golang library, these commands need to be executed (inside 
 
 `pip install -r $GOPATH/src/github.com/yash1994/spacy-go/requirements.txt`
 
+Install spacy [language models](https://spacy.io/models) with following command.
+
+`python3 -m spacy download en_core_web_sm`
+
 Connection between client and server is secured by TLS/SSL authentication. Use following command to generate unique pair of root certificate that is used to authenticate the server and private key that only the server has access to.
 
 `openssl req -newkey rsa:2048 -nodes -keyout $GOPATH/src/github.com/yash1994/spacy-go/server.key -x509 -days 365 -out $GOPATH/src/github.com/yash1994/spacy-go/server.crt -subj "/CN=localhost"`
@@ -84,6 +88,7 @@ func main() {
 | Load | modelName `string` | [`TextResponse`](docs/textResponse.md), `Error` | Load [spaCy's Language Models](https://spacy.io/usage/models) for text annotations. |
 | Nlp | text `string` | [`ParsedNLPRes`](docs/parsedNlpRes.md), `Error` | Annotate (parse, tag, ner) text using previously loaded model. |
 | Similarity | texta `string`, textb `string` | [`TextSimilarity`](docs/textSimilarity.md), `Error` | Computes semantic similarity between two sentences using loaded language model. |
+| PatternMatch | Array of rule `struct`, text `string` | [`Matches`](docs/patternMatches.md), Error | Match sequences of tokens, based on pattern rules. |
 
 ## ToDos
 * [x] Extensive Test cases
@@ -91,4 +96,3 @@ func main() {
 * [x] Add SSL and auth
 * [x] API Docs
 * [x] Similarity API
-* [ ] build script

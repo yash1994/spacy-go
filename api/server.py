@@ -77,7 +77,6 @@ class NlpService(nlp_pb2_grpc.NlpServicer):
 
     def ResetMatcher(self, request, context):
         self.matcher = None
-        self.matcher = Matcher(self.nlp.vocab)
         return nlp_pb2.TextResponse(message="Matcher object reset successful.")    
 
 

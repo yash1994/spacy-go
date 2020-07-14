@@ -457,3 +457,41 @@ func TestMatcher(t *testing.T) {
 	}
 
 }
+
+func TestMatcherError(t *testing.T) {
+	var testRules []rule
+	var text string = "This is error test."
+	var errSubs string = "'NoneType' object is not callable"
+	r, err := PatternMatch(testRules, text)
+
+	if r == nil {
+		if strings.Contains(err.Error(), errSubs) {
+			t.Logf("passed testMatcherError: %v", errSubs)
+		} else {
+			t.Errorf("failed testMatcherError: %v", err.Error())
+		}
+	}
+}
+
+func TestMatcherEmptyRuleError(t *testing.T) {
+	var testRules []rule
+	var testRule1, testRule2 rule
+	testRule1.id = "HelloWorld1"
+	testRule2.id = "HelloWorld2"
+
+	var testPattern1 pattern
+	testPattern1.key = "LOWER"
+	testPattern1.value = "hello"
+
+	testRule1.patterns = append(testRule1.patterns, testPattern1)
+	testRules = append(testRules, testRule1, testRule2)
+
+	r, err := PatternMatch(testRules, "HELLO WORLD on Google Maps.")
+
+	if r == nil {
+		t.Errorf("failed testMatcherEmptyRuleError: %v", err.Error())
+	} else {
+		t.Log("passed testMatcherEmptyRuleError")
+	}
+
+}
