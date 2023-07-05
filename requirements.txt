@@ -1,5 +1,5 @@
 protobuf
-grpcio==1.29.0
+grpcio==1.53.0
 grpcio-tools==1.29.0
 spacy>=2.1.0
 pytest-grpc
